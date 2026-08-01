@@ -262,49 +262,69 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             padding: '20px 20px 70px', // Extra bottom safety margin for mobile browser toolbars!
             boxSizing: 'border-box'
           }}>
-            {/* Native 60FPS High-Definition Cinematic Blooming Flowers & Floating Petals Canvas */}
+            {/* GPU-Accelerated Center-Outward Botanical Flower Garden */}
             <BloomingFlowersCanvas />
 
-            {/* Overlaid romantic text that fades in smoothly over the floating petals and stardust */}
+            {/* Overlaid romantic typography that fades in smoothly over the center floral sanctuary */}
             <div style={{
               position: 'relative',
               zIndex: 10,
               textAlign: 'center',
               padding: '0 20px',
-              maxWidth: '850px',
+              maxWidth: '880px',
               opacity: 0,
-              animation: 'smoothFadeIn 3.5s ease-in-out 1.5s forwards'
+              animation: 'smoothFadeIn 3s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards'
             }}>
-              <div className="font-dialogue" style={{
-                fontSize: 'clamp(30px, 5.5vw, 56px)',
-                color: '#FFFFFF',
-                fontWeight: 'bold',
-                lineHeight: '1.3',
-                letterSpacing: '1px',
-                textShadow: '0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 94, 126, 0.9)'
+              <div style={{
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: 'italic',
+                fontSize: 'clamp(38px, 6.8vw, 66px)',
+                color: '#FFF7F9',
+                fontWeight: '700',
+                lineHeight: '1.25',
+                letterSpacing: '0.5px',
+                textShadow: '0 4px 30px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 117, 143, 0.85), 0 0 90px rgba(255, 77, 109, 0.6)'
               }}>
                 happiest girlfriend day to my princess
               </div>
-              <div className="font-dialogue" style={{
-                fontSize: 'clamp(22px, 4vw, 38px)',
-                color: '#F4D35E',
+
+              <div style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(28px, 4.8vw, 44px)',
+                fontWeight: '600',
                 fontStyle: 'italic',
-                marginTop: '24px',
-                textShadow: '0 4px 15px rgba(0, 0, 0, 0.95), 0 0 25px rgba(244, 211, 94, 0.85)'
+                color: '#FFE8AA',
+                marginTop: '18px',
+                letterSpacing: '2px',
+                textShadow: '0 2px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 232, 170, 0.85)'
               }}>
                 -from saketh
               </div>
 
-              <div style={{ marginTop: '40px', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4.5s forwards' }}>
+              <div style={{ marginTop: '50px', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4s forwards' }}>
                 <button
                   onClick={() => {
                     gameStore.completeChapter(9);
                     if (onComplete) onComplete();
                   }}
-                  className="pixel-btn-teal pixel-btn font-dialogue"
-                  style={{ padding: '14px 26px', fontSize: '18px', fontWeight: 'bold', border: '3px solid #FFF', boxShadow: '0 8px 25px rgba(0,0,0,0.9)', cursor: 'pointer' }}
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255, 77, 109, 0.92) 0%, rgba(157, 78, 221, 0.92) 100%)',
+                    border: '2px solid rgba(255, 255, 255, 0.5)',
+                    borderRadius: '50px',
+                    padding: '16px 44px',
+                    color: '#FFFFFF',
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 'clamp(18px, 3.2vw, 22px)',
+                    fontWeight: '600',
+                    letterSpacing: '1.5px',
+                    boxShadow: '0 10px 35px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 77, 109, 0.65)',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.9), 0 0 45px rgba(255,77,109,0.9)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 10px 35px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 77, 109, 0.65)'; }}
                 >
-                  [RETURN TO FULLY LIT GOLDEN ARCADE MAP] -&gt;
+                  ✨ Return to Fully Lit Golden Arcade Map ✨
                 </button>
               </div>
             </div>
