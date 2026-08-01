@@ -242,7 +242,7 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
           </div>
         )}
 
-        {/* Stage 5: FULL-SCREEN Magical Girlfriend's Day Surprise Video Overlay via React Portal */}
+        {/* Stage 5: FULL-SCREEN Paper Flower Sanctuary Overlay via React Portal */}
         {stage === 'special_video' && createPortal(
           <div style={{
             position: 'fixed',
@@ -251,80 +251,89 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             right: 0,
             bottom: 0,
             width: '100vw',
-            height: '100dvh', // Dynamic viewport height prevents iOS Safari address bar bottom clipping!
+            height: '100dvh',
             zIndex: 99999999,
-            backgroundColor: '#0A0612',
+            backgroundColor: '#0D0D11',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             overflow: 'hidden',
-            padding: 'calc(15px + env(safe-area-inset-top, 0px)) 20px calc(125px + env(safe-area-inset-bottom, 35px)) 20px', // Extensive bottom buffer guarantees button sits high above Safari bottom address bar!
+            padding: 'calc(15px + env(safe-area-inset-top, 0px)) 20px calc(125px + env(safe-area-inset-bottom, 35px)) 20px',
             boxSizing: 'border-box'
           }}>
-            {/* GPU-Accelerated Center-Outward Botanical Flower Garden */}
+            {/* Architectural Paper Sculpture Garden Transition */}
             <BloomingFlowersCanvas />
 
-            {/* Overlaid romantic typography that fades in smoothly over the center floral sanctuary */}
+            {/* Clean editorial typography over the dark onyx gallery canvas */}
             <div style={{
               position: 'relative',
               zIndex: 10,
               textAlign: 'center',
-              padding: '0 20px',
-              maxWidth: '880px',
+              padding: '0 24px',
+              maxWidth: '820px',
               opacity: 0,
-              animation: 'smoothFadeIn 3s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards'
+              animation: 'smoothFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards'
             }}>
               <div style={{
                 fontFamily: "'Playfair Display', serif",
                 fontStyle: 'italic',
-                fontSize: 'clamp(28px, 6.2vw, 62px)',
-                color: '#FFF7F9',
-                fontWeight: '700',
-                lineHeight: '1.25',
-                letterSpacing: '0.5px',
-                textShadow: '0 4px 30px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 117, 143, 0.85), 0 0 90px rgba(255, 77, 109, 0.6)'
+                fontSize: 'clamp(30px, 6.5vw, 64px)',
+                color: '#FAF8F5',
+                fontWeight: '600',
+                lineHeight: '1.2',
+                letterSpacing: '0.2px',
+                textShadow: '0 4px 24px rgba(0, 0, 0, 0.85)'
               }}>
                 happiest girlfriend day to my princess
               </div>
 
               <div style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(22px, 4.4vw, 42px)',
-                fontWeight: '600',
+                fontSize: 'clamp(20px, 4vw, 36px)',
+                fontWeight: '500',
                 fontStyle: 'italic',
-                color: '#FFE8AA',
-                marginTop: 'clamp(12px, 2vh, 18px)',
-                letterSpacing: '2px',
-                textShadow: '0 2px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 232, 170, 0.85)'
+                color: '#D4AF37',
+                marginTop: 'clamp(14px, 2.2vh, 22px)',
+                letterSpacing: '1.5px',
+                textShadow: '0 2px 16px rgba(0, 0, 0, 0.8)'
               }}>
                 -from saketh
               </div>
 
-              <div style={{ marginTop: 'clamp(28px, 4.5vh, 48px)', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4s forwards' }}>
+              <div style={{ marginTop: 'clamp(36px, 5.5vh, 56px)', opacity: 0, animation: 'smoothFadeIn 1.8s ease-out 2.2s forwards' }}>
                 <button
                   onClick={() => {
                     gameStore.completeChapter(9);
                     if (onComplete) onComplete();
                   }}
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255, 77, 109, 0.92) 0%, rgba(157, 78, 221, 0.92) 100%)',
-                    border: '2px solid rgba(255, 255, 255, 0.5)',
-                    borderRadius: '50px',
-                    padding: '14px 38px',
-                    color: '#FFFFFF',
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: 'clamp(16px, 3vw, 22px)',
+                    background: 'rgba(255, 248, 235, 0.04)',
+                    border: '1px solid rgba(255, 248, 235, 0.35)',
+                    borderRadius: '4px',
+                    padding: '14px 34px',
+                    color: '#FAF8F5',
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: 'clamp(16px, 2.8vw, 20px)',
                     fontWeight: '600',
-                    letterSpacing: '1.5px',
-                    boxShadow: '0 10px 35px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 77, 109, 0.65)',
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
                     cursor: 'pointer',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                    transition: 'background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease'
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.9), 0 0 45px rgba(255,77,109,0.9)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 10px 35px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 77, 109, 0.65)'; }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#FAF8F5';
+                    e.currentTarget.style.borderColor = '#FAF8F5';
+                    e.currentTarget.style.color = '#0D0D11';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 248, 235, 0.04)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 248, 235, 0.35)';
+                    e.currentTarget.style.color = '#FAF8F5';
+                  }}
                 >
-                  ✨ Return to Fully Lit Golden Arcade Map ✨
+                  Return to map
                 </button>
               </div>
             </div>

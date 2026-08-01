@@ -1,340 +1,266 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 /* =========================================================================
-   INTENSIVE BOTANICAL SVG FLOWER COMPONENTS
-   Each flower is a crafted digital artwork featuring organic gradients,
-   layered petal depths, and luminous golden stamens.
-========================================================================= */
+   CLEAN PAPER FLOWER SCULPTURE COMPONENTS
+   Modern, editorial origami and layered cut-paper botanical relief geometries.
+   Zero radial neon gradients. Zero clipart glow effects. Pure craftsmanship.
+   ========================================================================= */
 
-const RosePeony = ({ size = 90 }) => (
+const OrigamiCamellia = ({ size = 160, variant = 'cream' }) => {
+  const palette = {
+    cream: { outer: '#F9F6F0', mid: '#EFEAE1', inner: '#E4DCD0', core: '#D4AF37' },
+    blush: { outer: '#F2DFDD', mid: '#E8D0CE', inner: '#DCBDBA', core: '#C59A45' },
+    taupe: { outer: '#EBE8E3', mid: '#DFDAD3', inner: '#D0C9C0', core: '#B89742' }
+  }[variant] || { outer: '#F9F6F0', mid: '#EFEAE1', inner: '#E4DCD0', core: '#D4AF37' };
+
+  return (
+    <svg width={size} height={size} viewBox="0 0 120 120" style={{ overflow: 'visible' }}>
+      <defs>
+        <filter id="paper-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="5" stdDeviation="4" floodColor="#000000" floodOpacity="0.32" />
+        </filter>
+        <filter id="layer-shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#000000" floodOpacity="0.22" />
+        </filter>
+      </defs>
+      <g filter="url(#paper-shadow)">
+        {/* Tier 3: Outer 8 Folded Petals */}
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
+          <g key={`t3-${i}`} transform={`rotate(${angle} 60 60)`}>
+            <polygon
+              points="60,60 74,35 60,8 46,35"
+              fill={palette.outer}
+              stroke="#000000"
+              strokeOpacity="0.06"
+              strokeWidth="0.5"
+            />
+            {/* Center score crease line */}
+            <line x1="60" y1="60" x2="60" y2="10" stroke="#000000" strokeOpacity="0.08" strokeWidth="0.8" />
+            {/* Light facet highlight */}
+            <polygon points="60,60 74,35 60,8" fill="#FFFFFF" fillOpacity="0.25" />
+          </g>
+        ))}
+      </g>
+      <g filter="url(#layer-shadow)">
+        {/* Tier 2: Middle 8 Rotated Petals */}
+        {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map((angle, i) => (
+          <g key={`t2-${i}`} transform={`rotate(${angle} 60 60)`}>
+            <polygon
+              points="60,60 71,40 60,18 49,40"
+              fill={palette.mid}
+              stroke="#000000"
+              strokeOpacity="0.08"
+              strokeWidth="0.5"
+            />
+            <line x1="60" y1="60" x2="60" y2="20" stroke="#000000" strokeOpacity="0.1" strokeWidth="0.8" />
+            <polygon points="60,60 71,40 60,18" fill="#FFFFFF" fillOpacity="0.2" />
+          </g>
+        ))}
+      </g>
+      <g filter="url(#layer-shadow)">
+        {/* Tier 1: Inner 6 Petals */}
+        {[0, 60, 120, 180, 240, 300].map((angle, i) => (
+          <g key={`t1-${i}`} transform={`rotate(${angle} 60 60)`}>
+            <polygon
+              points="60,60 68,46 60,28 52,46"
+              fill={palette.inner}
+              stroke="#000000"
+              strokeOpacity="0.1"
+              strokeWidth="0.5"
+            />
+            <polygon points="60,60 68,46 60,28" fill="#FFFFFF" fillOpacity="0.2" />
+          </g>
+        ))}
+        {/* Origami geometric stamen center */}
+        <polygon points="60,52 67,56 67,64 60,68 53,64 53,56" fill={palette.core} stroke="#000000" strokeOpacity="0.15" strokeWidth="0.5" />
+        <polygon points="60,55 64,57.5 64,62.5 60,65 56,62.5 56,57.5" fill="#E5C35E" />
+      </g>
+    </svg>
+  );
+};
+
+const PaperRose = ({ size = 150 }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
-    <defs>
-      <radialGradient id="roseGrad Outer" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#FF4D6D" />
-        <stop offset="70%" stopColor="#C9184A" />
-        <stop offset="100%" stopColor="#800F2F" />
-      </radialGradient>
-      <radialGradient id="roseGradInner" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#FF8FA3" />
-        <stop offset="100%" stopColor="#FF4D6D" />
-      </radialGradient>
-      <radialGradient id="goldCore" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#FFF066" />
-        <stop offset="60%" stopColor="#F48C06" />
-        <stop offset="100%" stopColor="#6A040F" />
-      </radialGradient>
-      <filter id="bloomGlow" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-      </filter>
-    </defs>
-
-    <g filter="url(#bloomGlow)">
-      {/* Outer Petals Layer */}
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-        <path
-          key={`outer-${i}`}
-          d="M 50 50 C 35 25, 30 10, 50 5 C 70 10, 65 25, 50 50 Z"
-          fill="url(#roseGrad Outer)"
-          stroke="#800F2F"
-          strokeWidth="0.5"
-          transform={`rotate(${angle} 50 50)`}
-        />
-      ))}
-      {/* Mid Petals Layer */}
-      {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map((angle, i) => (
-        <path
-          key={`mid-${i}`}
-          d="M 50 50 C 38 30, 35 18, 50 12 C 65 18, 62 30, 50 50 Z"
-          fill="url(#roseGradInner)"
-          stroke="#C9184A"
-          strokeWidth="0.5"
-          transform={`rotate(${angle} 50 50)`}
-        />
-      ))}
-      {/* Inner Petal Crown */}
-      {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-        <path
-          key={`inner-${i}`}
-          d="M 50 50 C 42 38, 40 28, 50 24 C 60 28, 58 38, 50 50 Z"
-          fill="#FFB3C6"
-          transform={`rotate(${angle + 15} 50 50)`}
-        />
-      ))}
-      {/* Glowing Golden Center */}
-      <circle cx="50" cy="50" r="10" fill="url(#goldCore)" />
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((ang, idx) => (
-        <circle
-          key={idx}
-          cx={50 + Math.cos(ang * Math.PI / 180) * 6}
-          cy={50 + Math.sin(ang * Math.PI / 180) * 6}
-          r="1.5"
-          fill="#FFF9E6"
-        />
-      ))}
-    </g>
-  </svg>
-);
-
-const SakuraBlossom = ({ size = 85 }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
-    <defs>
-      <radialGradient id="sakuraGrad" cx="50%" cy="10%">
-        <stop offset="0%" stopColor="#FFF0F3" />
-        <stop offset="60%" stopColor="#FFB3C6" />
-        <stop offset="100%" stopColor="#FF4D6D" />
-      </radialGradient>
-      <radialGradient id="sakuraCore" cx="50%" cy="50%">
-        <stop offset="0%" stopColor="#FFE6A7" />
-        <stop offset="100%" stopColor="#D4A373" />
-      </radialGradient>
-    </defs>
-    <g>
-      {/* 5 Classic Sakura Petals with signature center indentation */}
+    <g filter="drop-shadow(0px 6px 10px rgba(0,0,0,0.35))">
+      {/* Outer spiral paper folds */}
       {[0, 72, 144, 216, 288].map((ang, i) => (
-        <g key={i} transform={`rotate(${ang} 50 50)`}>
-          <path
-            d="M 50 50 C 35 35, 25 15, 42 6 C 46 4, 50 10, 50 10 C 50 10, 54 4, 58 6 C 75 15, 65 35, 50 50 Z"
-            fill="url(#sakuraGrad)"
-            stroke="#FF8096"
-            strokeWidth="0.5"
-          />
-          <path d="M 50 50 L 50 25" stroke="#FF4D6D" strokeWidth="0.8" opacity="0.4" />
+        <g key={`r1-${i}`} transform={`rotate(${ang} 50 50)`}>
+          <path d="M 50 50 L 72 40 L 65 15 L 45 25 Z" fill="#F4EDE2" stroke="#000" strokeOpacity="0.06" strokeWidth="0.4" />
+          <path d="M 50 50 L 72 40 L 65 15 Z" fill="#FFF" fillOpacity="0.3" />
         </g>
       ))}
-      {/* Core Stamen Threads */}
-      <circle cx="50" cy="50" r="7" fill="url(#sakuraCore)" />
-      {[0, 36, 72, 108, 144, 180, 216, 252, 288, 324].map((ang, idx) => {
-        const rad = (ang * Math.PI) / 180;
-        return (
-          <g key={idx}>
-            <line x1="50" y1="50" x2={50 + Math.cos(rad) * 9} y2={50 + Math.sin(rad) * 9} stroke="#A3704C" strokeWidth="0.8" />
-            <circle cx={50 + Math.cos(rad) * 9} cy={50 + Math.sin(rad) * 9} r="1.5" fill="#FFF275" />
-          </g>
-        );
-      })}
+    </g>
+    <g filter="drop-shadow(0px 3px 5px rgba(0,0,0,0.25))">
+      {/* Middle geometric folds */}
+      {[36, 108, 180, 252, 324].map((ang, i) => (
+        <g key={`r2-${i}`} transform={`rotate(${ang} 50 50)`}>
+          <path d="M 50 50 L 66 42 L 58 22 L 42 32 Z" fill="#E8DDD0" stroke="#000" strokeOpacity="0.08" strokeWidth="0.4" />
+          <path d="M 50 50 L 66 42 L 58 22 Z" fill="#FFF" fillOpacity="0.2" />
+        </g>
+      ))}
+    </g>
+    <g filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.2))">
+      {/* Inner tight folds */}
+      {[18, 90, 162, 234, 306].map((ang, i) => (
+        <polygon key={`r3-${i}`} points="50,50 60,45 54,34 44,40" fill="#DCBDB6" stroke="#000" strokeOpacity="0.1" strokeWidth="0.4" transform={`rotate(${ang} 50 50)`} />
+      ))}
+      <polygon points="50,46 54,50 50,54 46,50" fill="#B28C84" />
     </g>
   </svg>
 );
 
-const CelestialLotus = ({ size = 95 }) => (
+const OrigamiDahlia = ({ size = 140 }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
-    <defs>
-      <radialGradient id="lotusOuter" cx="50%" cy="80%">
-        <stop offset="0%" stopColor="#3C096C" />
-        <stop offset="60%" stopColor="#9D4EDD" />
-        <stop offset="100%" stopColor="#E0AAFF" />
-      </radialGradient>
-      <radialGradient id="lotusInner" cx="50%" cy="80%">
-        <stop offset="0%" stopColor="#7B2CBF" />
-        <stop offset="70%" stopColor="#C77DFF" />
-        <stop offset="100%" stopColor="#F4EEFF" />
-      </radialGradient>
-      <radialGradient id="lotusGold" cx="50%" cy="50%">
-        <stop offset="0%" stopColor="#FFFFCC" />
-        <stop offset="70%" stopColor="#FFC300" />
-        <stop offset="100%" stopColor="#99582A" />
-      </radialGradient>
-    </defs>
-    <g>
-      {/* Base Crown */}
-      {[15, 75, 135, 195, 255, 315].map((angle, i) => (
-        <path
-          key={`l-base-${i}`}
-          d="M 50 50 C 35 30, 25 15, 50 2 C 75 15, 65 30, 50 50 Z"
-          fill="url(#lotusOuter)"
-          opacity="0.85"
-          transform={`rotate(${angle} 50 50)`}
-        />
+    <g filter="drop-shadow(0px 5px 8px rgba(0,0,0,0.3))">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <g key={`d1-${i}`} transform={`rotate(${i * 30} 50 50)`}>
+          <polygon points="50,50 57,32 50,8 43,32" fill="#EAE5DC" stroke="#000" strokeOpacity="0.06" strokeWidth="0.4" />
+          <line x1="50" y1="50" x2="50" y2="8" stroke="#000" strokeOpacity="0.08" strokeWidth="0.5" />
+          <polygon points="50,50 57,32 50,8" fill="#FFF" fillOpacity="0.25" />
+        </g>
       ))}
-      {/* Mid Crown */}
-      {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-        <path
-          key={`l-mid-${i}`}
-          d="M 50 50 C 38 32, 30 16, 50 6 C 70 16, 62 32, 50 50 Z"
-          fill="url(#lotusInner)"
-          transform={`rotate(${angle} 50 50)`}
-        />
+    </g>
+    <g filter="drop-shadow(0px 3px 5px rgba(0,0,0,0.22))">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <g key={`d2-${i}`} transform={`rotate(${i * 30 + 15} 50 50)`}>
+          <polygon points="50,50 55,36 50,18 45,36" fill="#D8CEBD" stroke="#000" strokeOpacity="0.08" strokeWidth="0.4" />
+          <line x1="50" y1="50" x2="50" y2="18" stroke="#000" strokeOpacity="0.1" strokeWidth="0.5" />
+        </g>
       ))}
-      {/* Inner Diamonds */}
-      {[30, 90, 150, 210, 270, 330].map((angle, i) => (
-        <path
-          key={`l-in-${i}`}
-          d="M 50 50 C 43 38, 40 25, 50 15 C 60 25, 57 38, 50 50 Z"
-          fill="#F8F7FF"
-          transform={`rotate(${angle} 50 50)`}
-        />
-      ))}
-      <circle cx="50" cy="50" r="9" fill="url(#lotusGold)" />
-      <circle cx="50" cy="50" r="4" fill="#FFFFFF" opacity="0.8" />
+      <circle cx="50" cy="50" r="7" fill="#C5A059" />
+      <polygon points="50,45 54,48 53,53 47,53 46,48" fill="#E2C17D" />
     </g>
   </svg>
 );
 
-const GoldenDahlia = ({ size = 90 }) => (
+const PleatedPaperFrond = ({ size = 180 }) => (
+  <svg width={size} height={size} viewBox="0 0 120 120" style={{ overflow: 'visible' }}>
+    <g filter="drop-shadow(0px 8px 14px rgba(0,0,0,0.35))">
+      {/* Central architectural stem */}
+      <path d="M 10 110 Q 50 70 100 20" fill="none" stroke="#2B362B" strokeWidth="2.5" strokeLinecap="round" />
+      {/* Angled pleated leaf blades */}
+      {[
+        { x: 30, y: 90, len: 35, ang: -25 },
+        { x: 42, y: 78, len: 42, ang: -20 },
+        { x: 55, y: 65, len: 46, ang: -15 },
+        { x: 68, y: 52, len: 42, ang: -10 },
+        { x: 80, y: 40, len: 35, ang: -5 },
+        { x: 90, y: 30, len: 25, ang: 0 },
+      ].map((leaf, idx) => (
+        <g key={idx}>
+          {/* Left blade */}
+          <polygon
+            points={`${leaf.x},${leaf.y} ${leaf.x - 18},${leaf.y - leaf.len} ${leaf.x - 4},${leaf.y - leaf.len + 12}`}
+            fill="#455445"
+            stroke="#1F261F"
+            strokeWidth="0.4"
+            strokeOpacity="0.3"
+          />
+          {/* Right blade */}
+          <polygon
+            points={`${leaf.x},${leaf.y} ${leaf.x + leaf.len - 10},${leaf.y + 12} ${leaf.x + leaf.len - 22},${leaf.y + 2}`}
+            fill="#3B473B"
+            stroke="#1F261F"
+            strokeWidth="0.4"
+            strokeOpacity="0.3"
+          />
+        </g>
+      ))}
+    </g>
+  </svg>
+);
+
+const FoldedMonstera = ({ size = 160 }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
-    <defs>
-      <radialGradient id="dahliaGrad" cx="50%" cy="50%">
-        <stop offset="0%" stopColor="#D00000" />
-        <stop offset="50%" stopColor="#DC2F02" />
-        <stop offset="85%" stopColor="#F48C06" />
-        <stop offset="100%" stopColor="#FFBA08" />
-      </radialGradient>
-      <radialGradient id="dahliaInner" cx="50%" cy="50%">
-        <stop offset="0%" stopColor="#FFBA08" />
-        <stop offset="100%" stopColor="#E85D04" />
-      </radialGradient>
-    </defs>
-    <g>
-      {/* 16 Radial Sunburst Petals */}
-      {Array.from({ length: 16 }).map((_, i) => (
-        <path
-          key={`d1-${i}`}
-          d="M 50 50 C 44 32, 43 15, 50 4 C 57 15, 56 32, 50 50 Z"
-          fill="url(#dahliaGrad)"
-          stroke="#9D0208"
-          strokeWidth="0.3"
-          transform={`rotate(${i * 22.5} 50 50)`}
-        />
-      ))}
-      {/* Inner 16 short petals */}
-      {Array.from({ length: 16 }).map((_, i) => (
-        <path
-          key={`d2-${i}`}
-          d="M 50 50 C 46 38, 45 25, 50 16 C 55 25, 54 38, 50 50 Z"
-          fill="url(#dahliaInner)"
-          transform={`rotate(${i * 22.5 + 11.25} 50 50)`}
-        />
-      ))}
-      <circle cx="50" cy="50" r="8" fill="#6A040F" />
-      <circle cx="50" cy="50" r="5" fill="#FFD000" />
-      <circle cx="49" cy="48" r="2" fill="#FFFFFF" />
+    <g filter="drop-shadow(0px 6px 12px rgba(0,0,0,0.38))">
+      <path
+        d="M 50 95 C 45 75, 15 65, 15 35 C 15 15, 40 5, 50 5 C 60 5, 85 15, 85 35 C 85 65, 55 75, 50 95 Z"
+        fill="#364236"
+        stroke="#1C221C"
+        strokeWidth="0.5"
+      />
+      {/* Geometric architectural leaf splits */}
+      <polygon points="15,40 32,45 18,52" fill="#0D0D11" />
+      <polygon points="18,25 35,28 22,35" fill="#0D0D11" />
+      <polygon points="85,40 68,45 82,52" fill="#0D0D11" />
+      <polygon points="82,25 65,28 78,35" fill="#0D0D11" />
+      {/* Center structural leaf fold crease */}
+      <line x1="50" y1="95" x2="50" y2="10" stroke="#526152" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 50 95 C 45 75, 15 65, 15 35 C 15 15, 40 5, 50 5 Z" fill="#FFF" fillOpacity="0.08" />
     </g>
   </svg>
 );
 
-const RoyalAnemone = ({ size = 85 }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" style={{ overflow: 'visible' }}>
-    <defs>
-      <radialGradient id="anemoneGrad" cx="50%" cy="100%">
-        <stop offset="0%" stopColor="#10002B" />
-        <stop offset="50%" stopColor="#3C096C" />
-        <stop offset="85%" stopColor="#5A189A" />
-        <stop offset="100%" stopColor="#7B2CBF" />
-      </radialGradient>
-      <radialGradient id="anemoneTip" cx="50%" cy="0%">
-        <stop offset="0%" stopColor="#F72585" />
-        <stop offset="100%" stopColor="#7B2CBF" />
-      </radialGradient>
-    </defs>
-    <g>
-      {[0, 51.4, 102.8, 154.2, 205.6, 257, 308.4].map((ang, i) => (
-        <path
-          key={i}
-          d="M 50 50 C 32 30, 25 12, 45 6 C 50 5, 55 6, 55 6 C 55 6, 60 5, 65 6 C 85 12, 78 30, 50 50 Z"
-          fill="url(#anemoneTip)"
-          stroke="#10002B"
-          strokeWidth="0.5"
-          transform={`rotate(${ang} 50 50)`}
-        />
-      ))}
-      {[25.7, 77.1, 128.5, 179.9, 231.3, 282.7, 334.1].map((ang, i) => (
-        <path
-          key={`in-${i}`}
-          d="M 50 50 C 38 34, 34 20, 47 12 C 50 10, 50 10, 53 12 C 66 20, 62 34, 50 50 Z"
-          fill="url(#anemoneGrad)"
-          transform={`rotate(${ang} 50 50)`}
-        />
-      ))}
-      <circle cx="50" cy="50" r="11" fill="#10002B" />
-      <circle cx="50" cy="50" r="8" fill="#4895EF" />
-      <circle cx="50" cy="50" r="5" fill="#4CC9F0" />
-      <circle cx="48" cy="47" r="2.5" fill="#FFFFFF" />
-    </g>
-  </svg>
-);
-
-const FLOWER_TYPES = [
-  { component: RosePeony, name: 'RosePeony' },
-  { component: SakuraBlossom, name: 'SakuraBlossom' },
-  { component: CelestialLotus, name: 'CelestialLotus' },
-  { component: GoldenDahlia, name: 'GoldenDahlia' },
-  { component: RoyalAnemone, name: 'RoyalAnemone' },
+const COMPONENTS = [
+  { Comp: OrigamiCamellia, variant: 'cream', sizeRange: [130, 180], type: 'flower' },
+  { Comp: OrigamiCamellia, variant: 'blush', sizeRange: [120, 170], type: 'flower' },
+  { Comp: OrigamiCamellia, variant: 'taupe', sizeRange: [110, 150], type: 'flower' },
+  { Comp: PaperRose, variant: 'default', sizeRange: [120, 160], type: 'flower' },
+  { Comp: OrigamiDahlia, variant: 'default', sizeRange: [130, 175], type: 'flower' },
+  { Comp: PleatedPaperFrond, variant: 'default', sizeRange: [180, 260], type: 'foliage' },
+  { Comp: FoldedMonstera, variant: 'default', sizeRange: [150, 220], type: 'foliage' }
 ];
 
 /* =========================================================================
-   MAIN COMPONENT: BUTTERY-SMOOTH CENTER-OUTWARD FLOWER GARDEN
-   Uses pure GPU hardware compositing (transform translate3d / rotate / scale)
-   for unshakeable 60-120 FPS cinema smoothness without canvas lag.
-========================================================================= */
+   EDITORIAL PAPER GARDEN TRANSITION
+   Choreographed installation sweeping across the display with tactile weight
+   and natural deceleration. Zero artificial glow, zero clutter.
+   ========================================================================= */
 export default function BloomingFlowersCanvas() {
-  const [bloomed, setBloomed] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Generate a lush, dense edge-to-edge floral paradise using Golden Ratio areal packing!
-  const flowers = useMemo(() => {
-    const list = [];
-    const totalFlowers = 220; // Massive, lush floral density filling every single inch of the screen!
-    
-    // Golden ratio spiral distribution guarantees uniform botanical density with no bald spots or harsh rings
-    const goldenRatio = 1.618033988749895;
-    
-    for (let i = 0; i < totalFlowers; i++) {
-      // Golden angle rotation (~137.5 degrees) ensures natural organic packing
-      const angle = i * 2 * Math.PI * goldenRatio;
+  // Generate an architectural arrangement that sweeps over the viewport
+  const elements = useMemo(() => {
+    const items = [];
+    const count = 56; // Tailored count for clean, high-impact sculptural presence
+
+    // Distribute elements along viewport boundaries and inward framing zones
+    for (let i = 0; i < count; i++) {
+      const template = COMPONENTS[i % COMPONENTS.length];
+      const size = Math.floor(Math.random() * (template.sizeRange[1] - template.sizeRange[0])) + template.sizeRange[0];
       
-      // Using square root distribution maintains constant spatial density across expanding area
-      const normalizedDist = Math.sqrt((i + 3) / (totalFlowers + 3));
-      // Distance ranges smoothly from inner boundary (110px) all the way out to screen extremities (1450px)
-      const dist = 110 + (normalizedDist * 1340) + (Math.random() * 40 - 20);
+      // Determine zone placement: framing borders + natural overlapping depth
+      const angle = (i / count) * Math.PI * 2 + (Math.random() * 0.25 - 0.125);
+      // Ensure elements cover both close framing (140px) and full peripheral span out to corners (850px)
+      const dist = 140 + Math.pow(i / count, 0.8) * 700 + (Math.random() * 40 - 20);
       
       const targetX = Math.cos(angle) * dist;
       const targetY = Math.sin(angle) * dist * 0.95;
-      
-      // Rich variety of flower sizes from delicate filler blossoms (65px) to breathtaking show-pieces (135px)
-      const size = Math.floor(Math.random() * 70) + 65;
-      const FlowerComponent = FLOWER_TYPES[i % FLOWER_TYPES.length].component;
 
-      // Rolling outward bloom wave: inner flowers burst first, cascading across the screen to outer edges!
-      const delay = Math.floor(normalizedDist * 1300) + (i % 7) * 50 + Math.random() * 90;
-      const duration = 1.5 + Math.random() * 0.9;
-      const floatDuration = 4.5 + Math.random() * 3.5;
-      const floatDelay = Math.random() * 3;
-      const rotation = Math.floor(Math.random() * 360) - 180;
+      // Calculate initial origin off-screen along the matching direction for a sweeping entry
+      const originDist = dist + 600;
+      const originX = Math.cos(angle) * originDist;
+      const originY = Math.sin(angle) * originDist;
 
-      list.push({
+      // Elegant rotation that glides into place
+      const targetRotation = Math.floor(Math.random() * 360);
+      const originRotation = targetRotation + (i % 2 === 0 ? 45 : -45);
+
+      // Natural staging: foliage enters first as background structure, then prominent flowers
+      const baseDelay = template.type === 'foliage' ? Math.random() * 300 : 250 + Math.random() * 500;
+      const duration = 2.2 + Math.random() * 0.8; // Graceful gallery-speed glide
+
+      items.push({
         id: i,
-        Component: FlowerComponent,
+        Component: template.Comp,
+        variant: template.variant,
         size,
         targetX,
         targetY,
-        rotation,
-        delay,
+        originX,
+        originY,
+        targetRotation,
+        originRotation,
+        delay: Math.floor(baseDelay),
         duration,
-        floatDuration,
-        floatDelay,
-        zIndex: Math.floor(dist) // Outer flowers layer naturally behind or around inner ones
+        zIndex: Math.floor(dist)
       });
     }
-    return list;
-  }, []);
-
-  // Generate drifting bokeh stardust & falling silk rose petals
-  const particles = useMemo(() => {
-    return Array.from({ length: 75 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: -10 - Math.random() * 40,
-      size: Math.random() * 14 + 6,
-      duration: 7 + Math.random() * 6,
-      delay: Math.random() * 6,
-      type: i % 3 === 0 ? 'petal' : 'stardust',
-      color: ['#FF758F', '#FFD166', '#E0AAFF', '#FFFFFF'][i % 4]
-    }));
+    return items;
   }, []);
 
   useEffect(() => {
-    // Trigger GPU-accelerated transition smoothly after mounting
-    const timer = setTimeout(() => setBloomed(true), 60);
+    const timer = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(timer);
   }, []);
 
@@ -346,132 +272,50 @@ export default function BloomingFlowersCanvas() {
       height: '100%',
       overflow: 'hidden',
       pointerEvents: 'none',
-      background: 'radial-gradient(circle at center, #27072E 0%, #11031A 55%, #05010A 100%)',
+      backgroundColor: '#0D0D11', // Deep velvety obsidian gallery background
       zIndex: 1
     }}>
-      {/* Scoped GPU Keyframes for organic floating motion & atmospheric particles */}
       <style>{`
-        @keyframes floatSway {
-          0% { transform: translateY(0px) rotate(0deg) scale(1); }
-          50% { transform: translateY(-9px) rotate(3.5deg) scale(1.03); }
-          100% { transform: translateY(3px) rotate(-2deg) scale(0.98); }
-        }
-        @keyframes fallingParticle {
-          0% { transform: translate3d(0, -50px, 0) rotate(0deg); opacity: 0; }
-          10% { opacity: 0.85; }
-          90% { opacity: 0.85; }
-          100% { transform: translate3d(60px, 105dvh, 0) rotate(360deg); opacity: 0; }
-        }
-        @keyframes pulseAurora {
-          0%, 100% { opacity: 0.2; transform: scale(1); }
-          50% { opacity: 0.45; transform: scale(1.12); }
-        }
-        .flower-node {
+        .paper-sculpture {
           position: absolute;
           left: 50%;
           top: 50%;
           will-change: transform, opacity;
           pointer-events: none;
         }
-        .flower-float-inner {
-          will-change: transform;
-        }
       `}</style>
 
-      {/* Atmospheric breathing aurora glows in background */}
-      <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '25%',
-        width: '500px',
-        height: '500px',
-        background: 'radial-gradient(circle, rgba(255, 77, 109, 0.3) 0%, rgba(0,0,0,0) 70%)',
-        filter: 'blur(40px)',
-        animation: 'pulseAurora 6s ease-in-out infinite',
-        transform: 'translate(-50%, -50%)',
-        pointerEvents: 'none'
-      }} />
-      <div style={{
-        position: 'absolute',
-        top: '70%',
-        left: '75%',
-        width: '550px',
-        height: '550px',
-        background: 'radial-gradient(circle, rgba(157, 78, 221, 0.3) 0%, rgba(0,0,0,0) 70%)',
-        filter: 'blur(45px)',
-        animation: 'pulseAurora 8s ease-in-out infinite 2s',
-        transform: 'translate(-50%, -50%)',
-        pointerEvents: 'none'
-      }} />
-
-      {/* Center-outward cascading flower garden */}
-      {flowers.map((f) => {
-        const FlowerComp = f.Component;
-        return (
-          <div
-            key={f.id}
-            className="flower-node"
-            style={{
-              width: f.size,
-              height: f.size,
-              marginLeft: -(f.size / 2),
-              marginTop: -(f.size / 2),
-              zIndex: f.zIndex,
-              // Initial State: precisely at center (0,0), scale 0
-              // Bloomed State: swooping out smoothly to radial coordinates
-              transform: bloomed
-                ? `translate3d(${f.targetX}px, ${f.targetY}px, 0px) scale(1) rotate(${f.rotation}deg)`
-                : 'translate3d(0px, 0px, 0px) scale(0) rotate(-180deg)',
-              opacity: bloomed ? 1 : 0,
-              transition: `transform ${f.duration}s cubic-bezier(0.16, 1, 0.3, 1) ${f.delay}ms, opacity 0.8s ease-out ${f.delay}ms`
-            }}
-          >
-            {/* Inner wrapper executes continuous, life-like floral breathing sway */}
-            <div
-              className="flower-float-inner"
-              style={{
-                width: '100%',
-                height: '100%',
-                animation: `floatSway ${f.floatDuration}s ease-in-out infinite alternate ${f.floatDelay}s`
-              }}
-            >
-              <FlowerComp size={f.size} />
-            </div>
-          </div>
-        );
-      })}
-
-      {/* Floating Bokeh Stardust & Silk Petals */}
-      {particles.map((p) => (
-        <div
-          key={p.id}
-          style={{
-            position: 'absolute',
-            left: `${p.left}%`,
-            top: 0,
-            width: p.size,
-            height: p.type === 'petal' ? p.size * 1.5 : p.size,
-            borderRadius: p.type === 'petal' ? '60% 0% 60% 0%' : '50%',
-            background: p.type === 'petal'
-              ? `linear-gradient(135deg, ${p.color} 0%, rgba(255,255,255,0.7) 100%)`
-              : `radial-gradient(circle, #FFFFFF 0%, ${p.color} 70%, rgba(0,0,0,0) 100%)`,
-            boxShadow: p.type === 'stardust' ? `0 0 10px ${p.color}` : '0 2px 6px rgba(0,0,0,0.3)',
-            opacity: 0,
-            animation: `fallingParticle ${p.duration}s linear infinite ${p.delay}s`,
-            pointerEvents: 'none',
-            zIndex: 1000
-          }}
-        />
-      ))}
-
-      {/* Gentle dark luxury vignette over the exact center to ensure crystalline text contrast */}
+      {/* Subtle warm archival vignette to ground the paper shadows */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(circle at center, rgba(17, 3, 26, 0.65) 0%, rgba(11, 2, 18, 0.3) 40%, rgba(0, 0, 0, 0.1) 100%)',
-        pointerEvents: 'none',
-        zIndex: 500
+        background: 'radial-gradient(circle at center, rgba(30, 30, 38, 0.4) 0%, rgba(13, 13, 17, 0.95) 100%)',
+        pointerEvents: 'none'
       }} />
+
+      {elements.map((el) => {
+        const { Component, variant, size, targetX, targetY, originX, originY, targetRotation, originRotation, delay, duration, zIndex } = el;
+        return (
+          <div
+            key={el.id}
+            className="paper-sculpture"
+            style={{
+              width: size,
+              height: size,
+              marginLeft: -(size / 2),
+              marginTop: -(size / 2),
+              zIndex,
+              transform: mounted
+                ? `translate3d(${targetX}px, ${targetY}px, 0px) rotate(${targetRotation}deg) scale(1)`
+                : `translate3d(${originX}px, ${originY}px, 0px) rotate(${originRotation}deg) scale(0.85)`,
+              opacity: mounted ? 1 : 0,
+              transition: `transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, opacity ${duration * 0.6}s ease-out ${delay}ms`
+            }}
+          >
+            <Component size={size} variant={variant} />
+          </div>
+        );
+      })}
     </div>
   );
 }
