@@ -240,69 +240,95 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
           </div>
         )}
 
-        {/* Stage 5: Magical Girlfriend's Day Surprise Video & Smooth Fade-In Text */}
+        {/* Stage 5: FULL-SCREEN Magical Girlfriend's Day Surprise Video Overlay */}
         {stage === 'special_video' && (
           <div style={{
-            width: '100%',
-            maxWidth: '520px',
-            margin: 'auto',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 999999,
             background: '#0B0813',
-            border: '4px solid #FF5E7E',
-            borderRadius: '16px',
-            padding: '24px',
-            textAlign: 'center',
-            boxShadow: '0 0 40px rgba(255, 94, 126, 0.7), 0 15px 35px rgba(0,0,0,0.95)',
             display: 'flex',
             flexDirection: 'column',
+            justifyContent: 'center',
             alignItems: 'center',
-            gap: '20px',
-            animation: 'smoothFadeIn 1s ease-out forwards'
+            overflow: 'hidden'
           }}>
-            <div className="font-display" style={{ fontSize: '14px', color: '#F4D35E', letterSpacing: '1px' }}>
-              [A SPECIAL MESSAGE FROM SAKETH TO SHARON]
-            </div>
+            {/* Background looping flower video covering the full screen silently */}
+            <video
+              src="/flowers_enhanced.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              onTimeUpdate={(e) => {
+                const vid = e.target;
+                // Gradually slow down video playback as the flowers bloom across the screen
+                if (vid.currentTime > 0.5) {
+                  const progress = Math.min((vid.currentTime - 0.5) / 2.5, 1);
+                  const newRate = 1.0 - (progress * 0.7); // Smoothly decelerates from 1.0x to 0.3x speed
+                  if (!isNaN(newRate) && newRate > 0) {
+                    vid.playbackRate = newRate;
+                  }
+                }
+              }}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: 0.85,
+                pointerEvents: 'none'
+              }}
+            />
 
-            {/* High Definition Clean Video Player (No checkerboard!) */}
+            {/* Overlaid romantic text that fades in smoothly over the slow-motion flowers */}
             <div style={{
-              width: '100%',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              border: '3px solid #E0A8F2',
-              boxShadow: '0 0 25px rgba(224, 168, 242, 0.4)',
-              background: '#07050E',
-              position: 'relative'
-            }}>
-              <video
-                src="/flowers_enhanced.mp4"
-                autoPlay
-                loop
-                playsInline
-                controls
-                style={{ width: '100%', display: 'block', maxHeight: '380px', objectFit: 'cover' }}
-              />
-            </div>
-
-            {/* Smooth Fade In Text with Romantic Glow */}
-            <div style={{
+              position: 'relative',
+              zIndex: 2,
+              textAlign: 'center',
+              padding: '0 20px',
+              maxWidth: '850px',
               opacity: 0,
-              animation: 'smoothFadeIn 3s ease-in-out 1.2s forwards, romanticGlow 3s ease-in-out infinite',
-              marginTop: '10px'
+              animation: 'smoothFadeIn 3.5s ease-in-out 1.5s forwards'
             }}>
-              <div className="font-dialogue" style={{ fontSize: '38px', color: '#FFF', fontWeight: 'bold', lineHeight: '1.2', letterSpacing: '1px' }}>
-                happy girlfriend day baby ❤️
+              <div className="font-dialogue" style={{
+                fontSize: 'clamp(32px, 6vw, 56px)',
+                color: '#FFFFFF',
+                fontWeight: 'bold',
+                lineHeight: '1.3',
+                letterSpacing: '1px',
+                textShadow: '0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 94, 126, 0.9)'
+              }}>
+                happiest girlfriend day to my princess
+              </div>
+              <div className="font-dialogue" style={{
+                fontSize: 'clamp(24px, 4.5vw, 38px)',
+                color: '#F4D35E',
+                fontStyle: 'italic',
+                marginTop: '24px',
+                textShadow: '0 4px 15px rgba(0, 0, 0, 0.95), 0 0 25px rgba(244, 211, 94, 0.85)'
+              }}>
+                -from saketh
+              </div>
+
+              <div style={{ marginTop: '50px', opacity: 0, animation: 'smoothFadeIn 2s ease-out 5s forwards' }}>
+                <button
+                  onClick={() => {
+                    gameStore.completeChapter(9);
+                    if (onComplete) onComplete();
+                  }}
+                  className="pixel-btn-teal pixel-btn font-dialogue"
+                  style={{ padding: '14px 28px', fontSize: '20px', fontWeight: 'bold', border: '3px solid #FFF', boxShadow: '0 8px 25px rgba(0,0,0,0.9)' }}
+                >
+                  [RETURN TO FULLY LIT GOLDEN ARCADE MAP] -&gt;
+                </button>
               </div>
             </div>
-
-            <button
-              onClick={() => {
-                gameStore.completeChapter(9);
-                if (onComplete) onComplete();
-              }}
-              className="pixel-btn-teal pixel-btn font-dialogue"
-              style={{ width: '100%', marginTop: '16px', padding: '16px', fontSize: '20px', fontWeight: 'bold', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4s forwards' }}
-            >
-              [RETURN TO FULLY LIT GOLDEN ARCADE MAP] -&gt;
-            </button>
           </div>
         )}
       </div>
