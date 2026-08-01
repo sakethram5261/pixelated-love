@@ -8,7 +8,7 @@ import { gameStore } from '../state/gameStore';
 
 const REELS = [
   { id: 1, title: "When the artist from Bahrain replies after 3 weeks on @art._pngz", likes: "48.2K", reaction: "[SHARON REPLIED FROM BAHRAIN]: 'I already apologized for the art account delay!'" },
-  { id: 2, title: "Roblox obby obstacle falling compilation at 2:30 AM", likes: "124K", reaction: "[SHARON REPLIED ON DISCORD]: 'We are literally in that exact deep space obby right now!'" },
+  { id: 2, title: "Roblox obby obstacle falling compilation at 2:30 AM", likes: "124K", reaction: "[SHARON REPLIED ON INSTA]: 'We are literally in that exact deep space obby right now!'" },
   { id: 3, title: "When you accidentally start calling your best friend 'papi'", likes: "92.4K", reaction: "[SHARON ('PAPI') REPLIED]: 'Best gaming nickname ever invented in Roblox history!'" },
   { id: 4, title: "How it feels having your favorite human 3,000 miles away", likes: "210K", reaction: "[SHARON REPLIED INSTANTLY]: 'You are literally my favorite person on earth.'" }
 ];
@@ -230,11 +230,11 @@ export default function Chapter3_GettingClose({ onComplete, soundEnabled }) {
                   [JUMP] TIMED DOUBLE JUMP OVER HAZARD
                 </button>
                 <button
-                  onClick={() => performObbyAction('tease', "Sharon ('Papi'): 'Did you seriously just call me papi while leaping across space?! [DISCORD LAUGH]'")}
+                  onClick={() => performObbyAction('tease', "Sharon ('Papi'): 'Did you seriously just call me papi while leaping across space?! [INSTAGRAM LAUGH]'")}
                   className="pixel-btn"
                   style={{ flex: '1 1 45%', padding: '12px', background: '#E0A8F2', color: '#000', fontSize: '13px', fontWeight: 'bold' }}
                 >
-                  [VOICE] TEASE "PAPI" ON DISCORD
+                  [VOICE] TEASE "PAPI" ON INSTA
                 </button>
               </div>
               <button
@@ -394,7 +394,7 @@ export default function Chapter3_GettingClose({ onComplete, soundEnabled }) {
             color: '#FFF'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', borderBottom: '1px solid #2C355E', paddingBottom: '10px' }}>
-              <span className="font-display" style={{ fontSize: '13px', color: '#38BDF8' }}>[DISCORD] LATE NIGHT VOICE CALL</span>
+              <span className="font-display" style={{ fontSize: '13px', color: '#E1306C' }}>[INSTAGRAM] LATE NIGHT VOICE CALL</span>
               <span className="font-display" style={{ fontSize: '11px', background: '#2ecc71', color: '#000', padding: '2px 8px', borderRadius: '4px' }}>● 3:15 AM</span>
             </div>
 

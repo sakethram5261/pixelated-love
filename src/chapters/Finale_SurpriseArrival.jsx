@@ -210,7 +210,7 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             </div>
 
             <div className="font-dialogue" style={{ fontSize: '24px', fontStyle: 'italic', color: '#FFF', maxWidth: '450px', lineHeight: '1.4' }}>
-              "She rushes straight into my arms. No Wi-Fi lag. No Discord audio delays. Just real, genuine warmth."
+              "She rushes straight into my arms. No Wi-Fi lag. No Instagram video drops. Just real, genuine warmth."
             </div>
 
             <button onClick={() => setStage('epilogue')} className="pixel-btn-teal pixel-btn" style={{ width: '95%', padding: '16px', fontSize: '15px', fontWeight: 'bold' }}>
@@ -248,23 +248,27 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             position: 'fixed',
             top: 0,
             left: 0,
+            right: 0,
+            bottom: 0,
             width: '100vw',
-            height: '100vh',
+            height: '100dvh', // Dynamic viewport height prevents iOS Safari address bar bottom clipping!
             zIndex: 99999999,
-            backgroundColor: '#0B0813',
+            backgroundColor: '#0A0612',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            padding: '20px 20px 70px', // Extra bottom safety margin for mobile browser toolbars!
+            boxSizing: 'border-box'
           }}>
-            {/* Native 60FPS 4K Resolution Blooming Flowers Canvas Animation */}
+            {/* Native 60FPS High-Definition Cinematic Blooming Flowers & Floating Petals Canvas */}
             <BloomingFlowersCanvas />
 
-            {/* Overlaid romantic text that fades in smoothly over the slow-motion flowers */}
+            {/* Overlaid romantic text that fades in smoothly over the floating petals and stardust */}
             <div style={{
               position: 'relative',
-              zIndex: 2,
+              zIndex: 10,
               textAlign: 'center',
               padding: '0 20px',
               maxWidth: '850px',
@@ -272,7 +276,7 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
               animation: 'smoothFadeIn 3.5s ease-in-out 1.5s forwards'
             }}>
               <div className="font-dialogue" style={{
-                fontSize: 'clamp(32px, 6vw, 56px)',
+                fontSize: 'clamp(30px, 5.5vw, 56px)',
                 color: '#FFFFFF',
                 fontWeight: 'bold',
                 lineHeight: '1.3',
@@ -282,7 +286,7 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
                 happiest girlfriend day to my princess
               </div>
               <div className="font-dialogue" style={{
-                fontSize: 'clamp(24px, 4.5vw, 38px)',
+                fontSize: 'clamp(22px, 4vw, 38px)',
                 color: '#F4D35E',
                 fontStyle: 'italic',
                 marginTop: '24px',
@@ -291,14 +295,14 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
                 -from saketh
               </div>
 
-              <div style={{ marginTop: '50px', opacity: 0, animation: 'smoothFadeIn 2s ease-out 5s forwards' }}>
+              <div style={{ marginTop: '40px', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4.5s forwards' }}>
                 <button
                   onClick={() => {
                     gameStore.completeChapter(9);
                     if (onComplete) onComplete();
                   }}
                   className="pixel-btn-teal pixel-btn font-dialogue"
-                  style={{ padding: '14px 28px', fontSize: '20px', fontWeight: 'bold', border: '3px solid #FFF', boxShadow: '0 8px 25px rgba(0,0,0,0.9)' }}
+                  style={{ padding: '14px 26px', fontSize: '18px', fontWeight: 'bold', border: '3px solid #FFF', boxShadow: '0 8px 25px rgba(0,0,0,0.9)', cursor: 'pointer' }}
                 >
                   [RETURN TO FULLY LIT GOLDEN ARCADE MAP] -&gt;
                 </button>

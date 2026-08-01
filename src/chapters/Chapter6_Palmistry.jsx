@@ -52,7 +52,7 @@ export default function Chapter6_Palmistry({ onComplete, soundEnabled }) {
       activeObject="laptop"
       onInteract={handleRoomInteract}
       soundEnabled={soundEnabled}
-      customObservation="It's 2:00 AM on Discord in your bedroom. Sharon just sent a link to a quirky AI astrological Palm-Reading tool on your PC!"
+      customObservation="It's 2:00 AM on an Instagram call in your bedroom. Sharon just sent a link to a quirky AI astrological Palm-Reading tool on your PC!"
     >
       {/* Intro Dialogue */}
       {stage === 'intro' && (

@@ -49,9 +49,9 @@ export default function RoomHub({
       key: 'laptop',
       label: 'Desk Laptop',
       actionTitle: 'USE LAPTOP',
-      desc: "Your primary wooden desk workstation. Perfect for Discord video chats, Roblox obby runs with 'papi', and late-night gaming.",
-      style: { top: '53%', left: '8%', width: '28%', height: '36%' },
-      badgeAlign: { top: '35%', left: '45%', transform: 'translate(-30%, -50%)' },
+      desc: "Your primary wooden desk workstation. Perfect for Instagram video calls, Roblox obby runs with 'papi', and late-night gaming.",
+      style: { top: '39%', left: '17%', width: '17%', height: '17%' },
+      badgeAlign: { top: '0%', left: '50%', transform: 'translate(-50%, -115%)' },
       badgeColor: '#F4D35E'
     },
     {
@@ -59,8 +59,8 @@ export default function RoomHub({
       label: 'Bed Phone',
       actionTitle: 'CHECK PHONE',
       desc: "Your faithful mobile phone resting on your pillow. Your digital gateway across 3,000 miles to her art account @art._pngz.",
-      style: { top: '42%', left: '62%', width: '26%', height: '24%' },
-      badgeAlign: { top: '50%', left: '30%', transform: 'translate(-70%, -50%)' },
+      style: { top: '49%', left: '61%', width: '8%', height: '7%' },
+      badgeAlign: { top: '0%', left: '50%', transform: 'translate(-50%, -120%)' },
       badgeColor: '#FF5E7E'
     },
     {
@@ -68,8 +68,8 @@ export default function RoomHub({
       label: 'Wall Calendar',
       actionTitle: 'CHECK DATES',
       desc: "Your 2024 wall calendar by the window, counting the silent 21-day wait and marking down future flight goals.",
-      style: { top: '23%', left: '63%', width: '16%', height: '14%' },
-      badgeAlign: { top: '115%', left: '30%', transform: 'translate(-65%, 0%)' },
+      style: { top: '13%', left: '50%', width: '12%', height: '18%' },
+      badgeAlign: { top: '100%', left: '50%', transform: 'translate(-50%, 15%)' },
       badgeColor: '#2ecc71'
     },
     {
@@ -77,8 +77,8 @@ export default function RoomHub({
       label: 'Travel Gear',
       actionTitle: 'PACK SUITCASE',
       desc: "Your travel gear and lucky paper airplane, waiting for the special secret trip when you bridge the 3,000 miles.",
-      style: { top: '8%', left: '6%', width: '22%', height: '24%' },
-      badgeAlign: { top: '50%', left: '60%', transform: 'translate(-30%, -50%)' },
+      style: { top: '79%', left: '71%', width: '27%', height: '20%' },
+      badgeAlign: { top: '0%', left: '50%', transform: 'translate(-50%, -115%)' },
       badgeColor: '#E0A8F2'
     }
   ];
@@ -138,24 +138,27 @@ export default function RoomHub({
       <div style={{
         flex: 1,
         position: 'relative',
-        margin: '8px',
+        margin: '6px',
         border: '5px solid #D4A373',
         borderRadius: '8px',
         overflow: 'hidden',
         boxShadow: '0 8px 25px rgba(0,0,0,0.8)',
-        backgroundColor: '#1C1224',
+        backgroundColor: '#11091A',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        {/* Pixel Art Bedroom Background */}
+        {/* Aspect-Ratio Locked Bedroom Stage so interactive boxes NEVER drift off-center on any phone or PC screen */}
         <div style={{
-          width: '100%',
-          height: '100%',
-          backgroundImage: 'url(/bedroom_bg.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
           position: 'relative',
+          width: '1200px',
+          maxWidth: '100%',
+          maxHeight: '100%',
+          aspectRatio: '1 / 1',
+          margin: 'auto',
+          backgroundImage: 'url(/bedroom_vertical.png)',
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
           imageRendering: 'pixelated'
         }}>
           {/* Render Interactive Hotspot Overlays */}
@@ -219,54 +222,19 @@ export default function RoomHub({
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(11, 8, 19, 0.55)',
-            backdropFilter: 'blur(3px)',
+            backgroundColor: 'rgba(11, 8, 19, 0.65)',
+            backdropFilter: 'blur(4px)',
             zIndex: 100,
             display: 'flex',
             flexDirection: 'column',
             overflowY: 'auto',
             animation: 'fadeIn 0.2s ease-out',
-            padding: '10px',
+            padding: '12px',
             boxSizing: 'border-box'
           }}>
             {children}
           </div>
         )}
-      </div>
-
-      {/* Retro Arcade Observation HUD below room */}
-      <div style={{
-        backgroundColor: '#11060C',
-        borderTop: '4px solid #D4A373',
-        padding: '10px 16px',
-        minHeight: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        boxShadow: '0 -3px 12px rgba(0,0,0,0.6)',
-        zIndex: 10
-      }}>
-        <div className="font-dialogue" style={{ 
-          fontSize: '19px', 
-          color: '#FCE881', 
-          width: '100%',
-          lineHeight: '1.4',
-          textShadow: '1px 1px 2px #000'
-        }}>
-          💭 <span style={{ color: '#FFF' }}>{observation}</span>
-        </div>
-      </div>
-
-      {/* Room interaction helper note at very bottom */}
-      <div style={{ 
-        textAlign: 'center', 
-        padding: '5px 12px 8px', 
-        fontSize: '14px', 
-        color: '#CBD5E1', 
-        background: '#190A1B',
-        borderTop: '1px solid #3E1C38',
-        zIndex: 10
-      }}>
-        ✨ <b style={{ color: '#F4D35E' }}>HOW TO PLAY:</b> Click directly on your room's glowing furniture (e.g., 🛏️ Bed Phone, 💻 Desk Laptop, or 🗓️ Calendar) to advance the story!
       </div>
     </div>
   );
