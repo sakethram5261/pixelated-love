@@ -230,3 +230,13 @@ body {
   background-color: var(--nt-fore);
   border: 2px solid var(--nt-accent);
 }
+
+@keyframes smoothFadeIn {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes romanticGlow {
+  0%, 100% { text-shadow: 0 0 15px rgba(255, 94, 126, 0.7), 0 0 30px rgba(255, 94, 126, 0.4); }
+  50% { text-shadow: 0 0 25px rgba(244, 211, 94, 0.9), 0 0 45px rgba(244, 211, 94, 0.6); }
+}

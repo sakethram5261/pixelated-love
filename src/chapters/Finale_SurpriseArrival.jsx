@@ -234,31 +234,72 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             <div className="font-dialogue" style={{ fontSize: '22px', color: '#FFF6E0', fontStyle: 'italic', lineHeight: '1.4' }}>
               "{epilogueText}"
             </div>
-            <button onClick={() => setStage('credits')} className="pixel-btn-amber pixel-btn" style={{ width: '100%', padding: '16px', fontSize: '15px', fontWeight: 'bold' }}>
-              [ROLL GAME CREDITS] -&gt;
+            <button onClick={() => setStage('special_video')} className="pixel-btn-amber pixel-btn font-dialogue" style={{ width: '100%', padding: '16px', fontSize: '22px', fontWeight: 'bold', animation: 'pulse 1.5s infinite', background: '#FF5E7E', color: '#000', borderColor: '#FFF', boxShadow: '0 0 20px rgba(255,94,126,0.6)' }}>
+              [OPEN YOUR SPECIAL GIRLFRIEND'S DAY SURPRISE] -&gt;
             </button>
           </div>
         )}
 
-        {/* Stage 5: Rolling Credits (Zero Emojis!) */}
-        {stage === 'credits' && (
-          <div style={{ width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '18px', padding: '12px' }}>
-            <div className="font-display" style={{ fontSize: '18px', color: '#F2D49B' }}>
-              [THE END]: CONGRATULATIONS!
+        {/* Stage 5: Magical Girlfriend's Day Surprise Video & Smooth Fade-In Text */}
+        {stage === 'special_video' && (
+          <div style={{
+            width: '100%',
+            maxWidth: '520px',
+            margin: 'auto',
+            background: '#0B0813',
+            border: '4px solid #FF5E7E',
+            borderRadius: '16px',
+            padding: '24px',
+            textAlign: 'center',
+            boxShadow: '0 0 40px rgba(255, 94, 126, 0.7), 0 15px 35px rgba(0,0,0,0.95)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '20px',
+            animation: 'smoothFadeIn 1s ease-out forwards'
+          }}>
+            <div className="font-display" style={{ fontSize: '14px', color: '#F4D35E', letterSpacing: '1px' }}>
+              [A SPECIAL MESSAGE FROM SAKETH TO SHARON]
             </div>
-            <div className="font-dialogue" style={{ fontSize: '24px', color: '#FFF', lineHeight: '1.4' }}>
-              Thank you for experiencing Saketh &amp; Sharon's 3,000 Mile Love Story.
+
+            {/* High Definition Clean Video Player (No checkerboard!) */}
+            <div style={{
+              width: '100%',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              border: '3px solid #E0A8F2',
+              boxShadow: '0 0 25px rgba(224, 168, 242, 0.4)',
+              background: '#07050E',
+              position: 'relative'
+            }}>
+              <video
+                src="/flowers_enhanced.mp4"
+                autoPlay
+                loop
+                playsInline
+                controls
+                style={{ width: '100%', display: 'block', maxHeight: '380px', objectFit: 'cover' }}
+              />
             </div>
-            <div style={{ opacity: 0.9, fontSize: '18px', fontFamily: 'var(--font-dialogue)', color: '#FFF6E0', lineHeight: '1.4', background: '#071518', padding: '14px', border: '1px solid #1F5E5E', borderRadius: '8px' }}>
-              Featuring real Roblox obby team play, late-night Reel marathons, genuine 16x16 Pixel Art, and an unbreakable bond that conquered every ocean.
+
+            {/* Smooth Fade In Text with Romantic Glow */}
+            <div style={{
+              opacity: 0,
+              animation: 'smoothFadeIn 3s ease-in-out 1.2s forwards, romanticGlow 3s ease-in-out infinite',
+              marginTop: '10px'
+            }}>
+              <div className="font-dialogue" style={{ fontSize: '38px', color: '#FFF', fontWeight: 'bold', lineHeight: '1.2', letterSpacing: '1px' }}>
+                happy girlfriend day baby ❤️
+              </div>
             </div>
+
             <button
               onClick={() => {
                 gameStore.completeChapter(9);
                 if (onComplete) onComplete();
               }}
-              className="pixel-btn-teal pixel-btn"
-              style={{ width: '100%', marginTop: '14px', padding: '16px', fontSize: '15px', fontWeight: 'bold' }}
+              className="pixel-btn-teal pixel-btn font-dialogue"
+              style={{ width: '100%', marginTop: '16px', padding: '16px', fontSize: '20px', fontWeight: 'bold', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4s forwards' }}
             >
               [RETURN TO FULLY LIT GOLDEN ARCADE MAP] -&gt;
             </button>
