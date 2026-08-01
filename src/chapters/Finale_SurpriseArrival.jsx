@@ -259,7 +259,7 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             justifyContent: 'center',
             alignItems: 'center',
             overflow: 'hidden',
-            padding: '20px 20px 70px', // Extra bottom safety margin for mobile browser toolbars!
+            padding: 'calc(15px + env(safe-area-inset-top, 0px)) 20px calc(125px + env(safe-area-inset-bottom, 35px)) 20px', // Extensive bottom buffer guarantees button sits high above Safari bottom address bar!
             boxSizing: 'border-box'
           }}>
             {/* GPU-Accelerated Center-Outward Botanical Flower Garden */}
@@ -278,7 +278,7 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
               <div style={{
                 fontFamily: "'Playfair Display', serif",
                 fontStyle: 'italic',
-                fontSize: 'clamp(38px, 6.8vw, 66px)',
+                fontSize: 'clamp(28px, 6.2vw, 62px)',
                 color: '#FFF7F9',
                 fontWeight: '700',
                 lineHeight: '1.25',
@@ -290,18 +290,18 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
 
               <div style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(28px, 4.8vw, 44px)',
+                fontSize: 'clamp(22px, 4.4vw, 42px)',
                 fontWeight: '600',
                 fontStyle: 'italic',
                 color: '#FFE8AA',
-                marginTop: '18px',
+                marginTop: 'clamp(12px, 2vh, 18px)',
                 letterSpacing: '2px',
                 textShadow: '0 2px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 232, 170, 0.85)'
               }}>
                 -from saketh
               </div>
 
-              <div style={{ marginTop: '50px', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4s forwards' }}>
+              <div style={{ marginTop: 'clamp(28px, 4.5vh, 48px)', opacity: 0, animation: 'smoothFadeIn 2s ease-out 4s forwards' }}>
                 <button
                   onClick={() => {
                     gameStore.completeChapter(9);
@@ -311,10 +311,10 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
                     background: 'linear-gradient(135deg, rgba(255, 77, 109, 0.92) 0%, rgba(157, 78, 221, 0.92) 100%)',
                     border: '2px solid rgba(255, 255, 255, 0.5)',
                     borderRadius: '50px',
-                    padding: '16px 44px',
+                    padding: '14px 38px',
                     color: '#FFFFFF',
                     fontFamily: "'Playfair Display', serif",
-                    fontSize: 'clamp(18px, 3.2vw, 22px)',
+                    fontSize: 'clamp(16px, 3vw, 22px)',
                     fontWeight: '600',
                     letterSpacing: '1.5px',
                     boxShadow: '0 10px 35px rgba(0, 0, 0, 0.85), 0 0 30px rgba(255, 77, 109, 0.65)',

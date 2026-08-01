@@ -270,37 +270,34 @@ const FLOWER_TYPES = [
 export default function BloomingFlowersCanvas() {
   const [bloomed, setBloomed] = useState(false);
 
-  // Generate deterministic ring-based layout radiating from screen center
+  // Generate a lush, dense edge-to-edge floral paradise using Golden Ratio areal packing!
   const flowers = useMemo(() => {
     const list = [];
-    const totalFlowers = 58; // Lush garden density filling the entire display
+    const totalFlowers = 220; // Massive, lush floral density filling every single inch of the screen!
     
-    // Distribute into radial rings from inner center to far perimeter
+    // Golden ratio spiral distribution guarantees uniform botanical density with no bald spots or harsh rings
+    const goldenRatio = 1.618033988749895;
+    
     for (let i = 0; i < totalFlowers; i++) {
-      let ring, dist, angle;
-      if (i < 10) {
-        ring = 1;
-        dist = 140 + Math.random() * 40; // Ring 1: frames the central romance text safely
-        angle = (i / 10) * Math.PI * 2 + (Math.random() * 0.2);
-      } else if (i < 28) {
-        ring = 2;
-        dist = 240 + Math.random() * 70; // Ring 2: middle garden meadow
-        angle = ((i - 10) / 18) * Math.PI * 2 + (Math.random() * 0.2);
-      } else {
-        ring = 3;
-        dist = 360 + Math.random() * 250; // Ring 3: outer screen reaches & viewport corners
-        angle = ((i - 28) / 30) * Math.PI * 2 + (Math.random() * 0.2);
-      }
-
+      // Golden angle rotation (~137.5 degrees) ensures natural organic packing
+      const angle = i * 2 * Math.PI * goldenRatio;
+      
+      // Using square root distribution maintains constant spatial density across expanding area
+      const normalizedDist = Math.sqrt((i + 3) / (totalFlowers + 3));
+      // Distance ranges smoothly from inner boundary (110px) all the way out to screen extremities (1450px)
+      const dist = 110 + (normalizedDist * 1340) + (Math.random() * 40 - 20);
+      
       const targetX = Math.cos(angle) * dist;
-      const targetY = Math.sin(angle) * dist;
-      const size = Math.floor(Math.random() * 35) + 75; // 75px to 110px luxurious floral size
+      const targetY = Math.sin(angle) * dist * 0.95;
+      
+      // Rich variety of flower sizes from delicate filler blossoms (65px) to breathtaking show-pieces (135px)
+      const size = Math.floor(Math.random() * 70) + 65;
       const FlowerComponent = FLOWER_TYPES[i % FLOWER_TYPES.length].component;
 
-      // Stagger delays outward from the center so they bloom like an opening galaxy
-      const delay = (ring * 220) + (i % 8) * 65 + Math.random() * 100;
-      const duration = 1.6 + Math.random() * 0.6;
-      const floatDuration = 5 + Math.random() * 3;
+      // Rolling outward bloom wave: inner flowers burst first, cascading across the screen to outer edges!
+      const delay = Math.floor(normalizedDist * 1300) + (i % 7) * 50 + Math.random() * 90;
+      const duration = 1.5 + Math.random() * 0.9;
+      const floatDuration = 4.5 + Math.random() * 3.5;
       const floatDelay = Math.random() * 3;
       const rotation = Math.floor(Math.random() * 360) - 180;
 
@@ -315,7 +312,7 @@ export default function BloomingFlowersCanvas() {
         duration,
         floatDuration,
         floatDelay,
-        zIndex: Math.floor(dist) // Closer to edge overlaps naturally
+        zIndex: Math.floor(dist) // Outer flowers layer naturally behind or around inner ones
       });
     }
     return list;
@@ -323,13 +320,13 @@ export default function BloomingFlowersCanvas() {
 
   // Generate drifting bokeh stardust & falling silk rose petals
   const particles = useMemo(() => {
-    return Array.from({ length: 32 }, (_, i) => ({
+    return Array.from({ length: 75 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: -10 - Math.random() * 40,
-      size: Math.random() * 12 + 6,
-      duration: 8 + Math.random() * 6,
-      delay: Math.random() * 5,
+      size: Math.random() * 14 + 6,
+      duration: 7 + Math.random() * 6,
+      delay: Math.random() * 6,
       type: i % 3 === 0 ? 'petal' : 'stardust',
       color: ['#FF758F', '#FFD166', '#E0AAFF', '#FFFFFF'][i % 4]
     }));
