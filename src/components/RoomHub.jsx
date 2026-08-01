@@ -219,15 +219,15 @@ export default function RoomHub({
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(11, 8, 19, 0.45)',
-            backdropFilter: 'blur(2px)',
+            backgroundColor: 'rgba(11, 8, 19, 0.55)',
+            backdropFilter: 'blur(3px)',
             zIndex: 100,
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'flex-end',
             overflowY: 'auto',
             animation: 'fadeIn 0.2s ease-out',
-            padding: '8px'
+            padding: '10px',
+            boxSizing: 'border-box'
           }}>
             {children}
           </div>

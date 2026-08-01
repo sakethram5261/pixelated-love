@@ -76,12 +76,12 @@ body {
 
 /* TYPOGRAPHY CLASSES */
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-display) !important;
   letter-spacing: -1px;
 }
 
 .font-dialogue {
-  font-family: var(--font-dialogue);
+  font-family: var(--font-dialogue) !important;
   font-size: 26px;
   letter-spacing: 0.5px;
 }
