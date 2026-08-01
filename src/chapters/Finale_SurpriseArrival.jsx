@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import DialogueBox from '../components/DialogueBox';
+import BloomingFlowersCanvas from '../components/BloomingFlowersCanvas';
 import SpriteRenderer from '../engine/SpriteRenderer';
 import storyData from '../data/storyData.json';
 import { chiptune } from '../audio/chiptune';
@@ -257,35 +258,8 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
             alignItems: 'center',
             overflow: 'hidden'
           }}>
-            {/* Background looping flower video covering the full screen silently */}
-            <video
-              src="/flowers_enhanced.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              onTimeUpdate={(e) => {
-                const vid = e.target;
-                // Gradually slow down video playback as the flowers bloom across the screen
-                if (vid.currentTime > 0.5) {
-                  const progress = Math.min((vid.currentTime - 0.5) / 2.5, 1);
-                  const newRate = 1.0 - (progress * 0.7); // Smoothly decelerates from 1.0x to 0.3x speed
-                  if (!isNaN(newRate) && newRate > 0) {
-                    vid.playbackRate = newRate;
-                  }
-                }
-              }}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.85,
-                pointerEvents: 'none'
-              }}
-            />
+            {/* Native 60FPS 4K Resolution Blooming Flowers Canvas Animation */}
+            <BloomingFlowersCanvas />
 
             {/* Overlaid romantic text that fades in smoothly over the slow-motion flowers */}
             <div style={{
