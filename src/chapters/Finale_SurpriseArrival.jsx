@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import DialogueBox from '../components/DialogueBox';
 import SpriteRenderer from '../engine/SpriteRenderer';
 import storyData from '../data/storyData.json';
@@ -240,16 +241,16 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
           </div>
         )}
 
-        {/* Stage 5: FULL-SCREEN Magical Girlfriend's Day Surprise Video Overlay */}
-        {stage === 'special_video' && (
+        {/* Stage 5: FULL-SCREEN Magical Girlfriend's Day Surprise Video Overlay via React Portal */}
+        {stage === 'special_video' && createPortal(
           <div style={{
             position: 'fixed',
             top: 0,
             left: 0,
             width: '100vw',
             height: '100vh',
-            zIndex: 999999,
-            background: '#0B0813',
+            zIndex: 99999999,
+            backgroundColor: '#0B0813',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -329,7 +330,8 @@ export default function Finale_SurpriseArrival({ onComplete, soundEnabled, gameS
                 </button>
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
 
