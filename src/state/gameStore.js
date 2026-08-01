@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 const STORAGE_KEY = '3000MILES_GAME_STATE';
 
 const defaultState = {
-  currentChapter: 0, // 0 = Map/Home, 1-8 = Chapters, 9 = Finale
+  currentChapter: -1, // -1 = Home Title Screen, 0 = Map/Hub, 1-8 = Chapters, 9 = Finale
   unlockedChapters: [1], // Start with chapter 1 unlocked
   pathTone: null, // 'playful' | 'sincere' | 'adventurous' | null
   flavorLog: [],
@@ -23,7 +23,12 @@ class GameStore {
   loadState() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? { ...defaultState, ...JSON.parse(saved) } : { ...defaultState };
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Always launch on the new pixelated title screen (-1) while retaining progress
+        return { ...defaultState, ...parsed, currentChapter: -1 };
+      }
+      return { ...defaultState };
     } catch (e) {
       return { ...defaultState };
     }

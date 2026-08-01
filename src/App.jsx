@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useGameState, gameStore } from './state/gameStore';
 import ArcadeMap from './components/ArcadeMap';
+import HomePage from './components/HomePage';
 import Chapter1_TheDare from './chapters/Chapter1_TheDare';
 import Chapter2_ThreeWeeks from './chapters/Chapter2_ThreeWeeks';
 import Chapter3_GettingClose from './chapters/Chapter3_GettingClose';
@@ -68,6 +69,9 @@ export default function App() {
         </div>
       )}
 
+      {currentChapter === -1 && (
+        <HomePage gameState={gameState} />
+      )}
       {currentChapter === 0 && (
         <ArcadeMap gameState={gameState} onSelectChapter={handleSelectChapter} />
       )}

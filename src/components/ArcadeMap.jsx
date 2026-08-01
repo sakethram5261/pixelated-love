@@ -57,6 +57,14 @@ export default function ArcadeMap({ gameState, onSelectChapter }) {
         
         <div style={{ display: 'flex', gap: '8px' }}>
           <button 
+            onClick={() => { chiptune.playSelect(settings.sound); gameStore.setChapter(-1); }}
+            className="pixel-btn"
+            style={{ padding: '6px', fontSize: '10px', minWidth: '44px', minHeight: '44px', background: '#2B1B12', borderColor: '#F4C95D', color: '#F4C95D' }}
+            title="Return to Title Screen"
+          >
+            ◀ TITLE
+          </button>
+          <button 
             onClick={() => { chiptune.playTap(true); gameStore.toggleSound(); }}
             className="pixel-btn"
             style={{ padding: '6px', fontSize: '10px', minWidth: '44px', minHeight: '44px', background: settings.sound ? '#33336B' : '#6B3F2A' }}
