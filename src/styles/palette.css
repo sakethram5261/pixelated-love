@@ -1,0 +1,232 @@
+/* 3000 MILES — Pixel Art Palette and Design System (Strict No-Gradient / No System-Font Rules) */
+
+:root {
+  /* INDIA PALETTE (His side) — warm, dusty, golden-hour */
+  --in-bg: #2B1B12;
+  --in-mid: #6B3F2A;
+  --in-fore: #C97B3D;
+  --in-accent: #F2A65A;
+  --in-highlight: #FFE3B3;
+
+  /* BAHRAIN PALETTE (Her side) — teal, sand, sea-glass */
+  --bh-bg: #0E2A2E;
+  --bh-mid: #1F5E5E;
+  --bh-fore: #4FA9A0;
+  --bh-accent: #F2D49B;
+  --bh-highlight: #FFF6E0;
+
+  /* NIGHT-CALL / LONG-DISTANCE PALETTE — navy, gold, stars */
+  --nt-bg: #0A0A2A;
+  --nt-mid: #1B1B4D;
+  --nt-fore: #33336B;
+  --nt-accent: #F4C95D;
+  --nt-highlight: #FFFFFF;
+
+  /* PALMISTRY DREAM SEQUENCE — mystic violet */
+  --my-bg: #1A0B2E;
+  --my-mid: #3D1E5C;
+  --my-fore: #7B3FA0;
+  --my-accent: #E0A8F2;
+  --my-highlight: #FFFFFF;
+
+  /* TYPOGRAPHY TOKENS */
+  --font-display: 'Press Start 2P', monospace, sans-serif;
+  --font-dialogue: 'VT323', 'Silkscreen', monospace, sans-serif;
+}
+
+/* GLOBAL RESETS & PIXEL RENDERING */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  background-color: #050510;
+  color: var(--nt-highlight);
+  font-family: var(--font-dialogue);
+  font-size: 24px;
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* PORTRAIT ARCADE CABINET SHELL */
+#root {
+  width: 100vw;
+  height: 100vh;
+  max-width: 450px;
+  max-height: 900px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--nt-bg);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.85);
+  border: 4px solid #33336B;
+  overflow: hidden;
+}
+
+/* TYPOGRAPHY CLASSES */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -1px;
+}
+
+.font-dialogue {
+  font-family: var(--font-dialogue);
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
+
+/* PIXEL UI COMPONENTS */
+.pixel-btn {
+  font-family: var(--font-display);
+  font-size: 13px;
+  padding: 12px 18px;
+  background-color: var(--in-mid);
+  color: var(--in-highlight);
+  border: 3px solid var(--in-fore);
+  box-shadow: 3px 3px 0px var(--in-bg);
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.05s steps(2);
+}
+
+.pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--in-bg);
+}
+
+.pixel-btn-teal {
+  background-color: var(--bh-mid);
+  color: var(--bh-highlight);
+  border-color: var(--bh-fore);
+  box-shadow: 3px 3px 0px var(--bh-bg);
+}
+
+.pixel-btn-violet {
+  background-color: var(--my-mid);
+  color: var(--my-highlight);
+  border-color: var(--my-fore);
+  box-shadow: 3px 3px 0px var(--my-bg);
+}
+
+.pixel-box {
+  background-color: rgba(10, 10, 42, 0.95);
+  border: 4px solid var(--nt-accent);
+  box-shadow: inset -4px -4px 0px var(--nt-mid), inset 4px 4px 0px var(--nt-highlight);
+  padding: 16px;
+}
+
+/* SCREEN SHAKE ANIMATION */
+@keyframes screenShake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3px, 2px); }
+  50% { transform: translate(3px, -2px); }
+  75% { transform: translate(-2px, -3px); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake {
+  animation: screenShake 0.2s steps(4) infinite;
+}
+
+/* CRT DISSOLVE / WIPE TRANSITIONS */
+@keyframes crtWipe {
+  0% { opacity: 0; filter: contrast(300%) brightness(200%); transform: scaleY(0.1); }
+  50% { transform: scaleY(1); }
+  100% { opacity: 1; filter: none; }
+}
+
+.screen-enter {
+  animation: crtWipe 0.35s steps(6) forwards;
+}
+
+/* SPLIT SCREEN HARD SEAM */
+.split-seam {
+  width: 6px;
+  background-color: #F4C95D;
+  background-image: repeating-linear-gradient(
+    180deg,
+    #F4C95D,
+    #F4C95D 8px,
+    #0A0A2A 8px,
+    #0A0A2A 16px
+  );
+  z-index: 10;
+}
+
+/* ACCESSIBILITY: REDUCED MOTION */
+[data-reduced-motion="true"] .shake {
+  animation: none !important;
+}
+
+[data-reduced-motion="true"] * {
+  transition: none !important;
+  animation-duration: 0.001s !important;
+}
+
+/* ARCADE GAMEPLAY KEYFRAMES & PHYSICS */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.96); }
+}
+
+@keyframes bounceCss {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatBlock {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes laserSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes jumpArc {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-42px) scale(1.15) rotate(-5deg); }
+  60% { transform: translateY(-42px) scale(1.15) rotate(5deg); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes synastryFlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(224, 168, 242, 0.9)); }
+  50% { filter: drop-shadow(0 0 20px rgba(244, 201, 93, 1)); }
+}
+
+@keyframes doorShake {
+  0% { transform: rotate(0deg) translate(0, 0); }
+  20% { transform: rotate(-4deg) translate(-5px, 0); }
+  40% { transform: rotate(4deg) translate(5px, 0); }
+  60% { transform: rotate(-3deg) translate(-3px, 0); }
+  80% { transform: rotate(3deg) translate(3px, 0); }
+  100% { transform: rotate(0deg) translate(0, 0); }
+}
+
+/* CUSTOM RETRO SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--nt-bg);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--nt-fore);
+  border: 2px solid var(--nt-accent);
+}

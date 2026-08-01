@@ -1,0 +1,150 @@
+{
+  "chapters": {
+    "1": {
+      "title": "The Secret Dare & @art._pngz",
+      "subtitle": "Chapter 1: A Compliment Into the Void",
+      "intro": [
+        { "speaker": "Friends in India", "portrait": "saketh_idle", "text": "I double dare you, Saketh! See that girl's Instagram profile? She lives all the way out in Bahrain. Send her a DM right now!" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "Wait, I literally have never met this girl before in my life! And look—her main account doesn't even accept message requests from strangers!" },
+        { "speaker": "Friends in India", "portrait": "saketh_idle", "text": "No excuses! Look closely at her bio—she has a secret art account @art._pngz! Go check out her artwork and send a DM there!" }
+      ],
+      "postSend": [
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "I kept the dare completely secret from her because honestly... her drawings on @art._pngz looked genuinely incredible! I sent a sweet text praising her paintings." },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "I tossed my phone onto my bed pillow. Hours pass. Then days. Still zero reply from Bahrain. Will she ever even respond to a stranger's compliment?" }
+      ]
+    },
+    "2": {
+      "title": "Three Weeks of Silence",
+      "subtitle": "Chapter 2: Waiting for a Signal",
+      "intro": [
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "It has been days since I texted Sharon's art account @art._pngz from my room in India. Complete silence." },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "I'll keep checking my wall calendar and focusing on my life here in India. She probably gets messages from art fans all the time..." }
+      ],
+      "dailyReflections": {
+        "day5": "Day 5: Still nothing on @art._pngz. She probably just didn't see my message request yet.",
+        "day12": "Day 12: Almost two weeks of silence. Her paintings were so lovely though, no regrets sending that compliment.",
+        "day18": "Day 18: Monsoon rains outside my window today. It's been almost 3 weeks since I texted her."
+      },
+      "reconnection": [
+        { "speaker": "Sharon (@art._pngz)", "portrait": "sharon_idle", "text": "OMG hi!! 😊 I am SO sorry, I literally just found your message buried in my art account requests! Thank you SO much for your really kind words about my drawings! That sunset watercolor took me days to paint! ✨" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "NO WAY! THREE WEEKS LATER SHE FINALLY REPLIED TO MY ART COMPLIMENT!! No sweat at all, your art just genuinely looked amazing to me!" },
+        { "speaker": "Sharon (@art._pngz)", "portrait": "sharon_idle", "text": "That is seriously the sweetest message! Well, hello from Bahrain! I'm Sharon, what's your story?" }
+      ]
+    },
+    "3": {
+      "title": "From Strangers to Best Friends",
+      "subtitle": "Chapter 3: Roblox Dates, 'Papi' & Endless Reels",
+      "intro": [
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "After that 3-week silence broke, everything changed instantly. We went from total strangers to inseparable best friends!" },
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Saketh, hop on Discord immediately! We have a Roblox obstacle course to conquer and I just sent you 5 Reels on Instagram!" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "Opening my laptop right now! Get ready to carry me through this obby, papi!" }
+      ],
+      "robloxBanter": [
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Did you seriously just call me 'papi' again while jumping off that platform?! 💀🤣" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "It is officially your permanent gaming nickname, papi! Now check Instagram, I sent you another relatable Reel!" },
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "We have been playing Roblox and watching Reels for five straight hours... how are we already this close when we live 3,000 miles apart?" }
+      ],
+      "questionsGame": [
+        {
+          "q": "Late night Discord call: 'Saketh, honestly... what made you reach out to my little art account @art._pngz three weeks before we became besties?'",
+          "options": [
+            { "label": "Your sunset watercolor was stunning, and honestly... you seemed like someone I just really wanted to know.", "flag": "friendly" },
+            { "label": "I was captivated by your creativity! And I'm so glad I texted, because now you're my favorite human, papi.", "flag": "sweet" },
+            { "label": "I was looking for a talented artist who could also carry my Roblox character through every obby! 🤣", "flag": "playful" }
+          ]
+        }
+      ]
+    },
+    "4": {
+      "title": "The Complication: Distance Weeps",
+      "subtitle": "Chapter 4: Rainy Night Support Call",
+      "intro": [
+        { "speaker": "Sharon", "portrait": "sharon_sad", "text": "Saketh... sorry for calling so late from Bahrain. It's just been a really tough, overwhelming week over here." },
+        { "speaker": "Saketh", "portrait": "saketh_sad", "text": "Hey, never apologize. I'm sitting right here by my window in India. Tell me everything." }
+      ],
+      "dialogue": [
+        {
+          "text": "It feels so unfair sometimes. My favorite person to talk to—my absolute best friend—lives an entire ocean away.",
+          "choices": [
+            { "label": "Hey, I'm right here in your headphones. No ocean can ever stop us from being teammates.", "tone": "reassuring" },
+            { "label": "Just close your eyes and listen to the rain. I am with you in spirit, papi, always.", "tone": "gentle" },
+            { "label": "Whenever Bahrain feels heavy, remember we have our digital world, your art, and endless laughter waiting.", "tone": "comforting" }
+          ]
+        }
+      ],
+      "afterChoice": [
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Thank you, Saketh. Even across 3,000 miles, you always know exactly how to make me smile again." }
+      ]
+    },
+    "5": {
+      "title": "The Shift: Morning Epiphany",
+      "subtitle": "Chapter 5: Falling for My Best Friend",
+      "intro": [
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "Morning sunlight shines onto my desk. I open my phone and see a sweet overnight message from Sharon." },
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Waking up to your memes and Reels is literally the highlight of my days now. I can't imagine my life without our Roblox calls." },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "I sit back in my chair. She started as a secret dare to find her @art._pngz account. Then 3 weeks of silence. Then my Roblox buddy." },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "And now... looking at our chat history, I realize the undeniable truth. I am completely falling in love with her." }
+      ]
+    },
+    "6": {
+      "title": "The Palmistry Reading",
+      "subtitle": "Chapter 6: 2 AM AI Astrological Scan",
+      "intro": [
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Saketh! Don't go to sleep yet! I found this crazy AI palmistry & astrology compatibility app online. Let's scan our hands on webcam!" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "It's literally 2:00 AM! Alright, let's put our palms up to our screens and see what the AI says." }
+      ],
+      "outro": [
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "99.8% SOULMATE SYNASTRY?! The AI literally says we're astronomically meant for each other!" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "See, papi? Even the computer knows that finding your @art._pngz account across 3,000 miles wasn't just coincidence!" }
+      ]
+    },
+    "7": {
+      "title": "Long Distance & Shared Stars",
+      "subtitle": "Chapter 7: Time Zone Synchrony & Promises",
+      "intro": [
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "Staring out my bedroom window into the Indian midnight. I adjust my dials to sync with Bahrain's time zone." },
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Look outside your window, Saketh. Do you see Orion's belt right now? We are looking at the exact same stars." }
+      ],
+      "branchChoice": {
+        "speaker": "Sharon", "portrait": "sharon_idle", "text": "Be honest... do you think we will ever actually stand under these stars together in real life, not just on screens?",
+        "options": [
+          { "label": "I am counting down the seconds until I hug my favorite Roblox soulmate in real life.", "flag": "playful" },
+          { "label": "I promise you, Sharon. We started across the sea, but our future is side by side.", "flag": "sincere" },
+          { "label": "No time zone or ocean can hold us back forever. Our real adventures haven't even started yet.", "flag": "adventurous" }
+        ]
+      }
+    },
+    "8": {
+      "title": "Planning the Surprise Flight",
+      "subtitle": "Chapter 8: Stealth Texting & Suitcase Packing",
+      "packIntro": [
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "The secret flight to Bahrain is booked! My open suitcase lies on my bedroom rug in India." },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "I have to pack my passport, my special handmade gift, and our lucky paper airplane without letting her suspect a thing!" }
+      ],
+      "stealthTexts": [
+        {
+          "question": "Sharon on WhatsApp: 'Hey! What are you up to today, papi? Ready for our usual Roblox obby marathon later?'",
+          "options": [
+            "Just reorganizing my room and studying today! I might be a tad busy later, but I'll message you soon! ❤️",
+            "Running some quick weekend errands around town! Save me a spot in Roblox for later tonight! 😉",
+            "Catching up on some chores! Keep sending me Reels in the meantime so I have something to laugh at!"
+          ]
+        }
+      ]
+    },
+    "9": {
+      "title": "The Surprise Arrival: 3,000 Miles to Zero",
+      "subtitle": "Finale: Manama, Bahrain Doorstep",
+      "doorstep": [
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "Who is knocking on my door at this hour... wait... SAKETH?!" },
+        { "speaker": "Saketh", "portrait": "saketh_idle", "text": "Hey there, papi. I decided 3,000 miles was way too far to stand between best friends and soulmates." },
+        { "speaker": "Sharon", "portrait": "sharon_idle", "text": "YOU ARE ACTUALLY HERE IN BAHRAIN!! I CAN'T BELIEVE IT!!" }
+      ],
+      "epilogues": {
+        "playful": "From secretly taking a friend's dare to find your art account @art._pngz, enduring 3 weeks of silence, to endless Roblox dates, calling you 'papi', and sharing thousands of Reels until 3 AM. We finally bridged the 3,000 miles to be together forever!",
+        "sincere": "We started as two strangers separated by an entire sea, linked by a message to your secret art account @art._pngz and a 21-day wait. But through patient friendship, daily laughter, and late-night calls, we became soulmates standing in each other's arms in reality.",
+        "adventurous": "No more glowing phone screens, no more time zone dials, and no more waiting for replies in the void. From finding @art._pngz to real-life partners, our greatest adventure starts right here at mile zero!"
+      }
+    }
+  }
+}
