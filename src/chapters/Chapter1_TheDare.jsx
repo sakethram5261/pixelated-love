@@ -96,7 +96,7 @@ export default function Chapter1_TheDare({ onComplete, soundEnabled }) {
         </div>
       )}
 
-      {/* STEP 1: Pixgram Main Account (@sharon.bahrain_) where Message Requests are closed */}
+      {/* STEP 1: Pixgram Main Account (@def_not_sharon_) where Message Requests are closed */}
       {stage === 'ig_main' && (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', minHeight: 0, padding: '4px' }}>
           <div style={{
@@ -117,7 +117,7 @@ export default function Chapter1_TheDare({ onComplete, soundEnabled }) {
             {/* Phone Header Bar - Fixed top */}
             <div style={{ flexShrink: 0, backgroundColor: '#1A1829', padding: '10px 14px', borderBottom: '2px solid #3E295C', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span className="font-display" style={{ fontSize: '12px', color: '#E0A8F2' }}>PIXGRAM</span>
-              <span className="font-display" style={{ fontSize: '12px', color: '#F4D35E' }}>@sharon.bahrain_ [PRIVATE]</span>
+              <span className="font-display" style={{ fontSize: '12px', color: '#F4D35E' }}>@def_not_sharon_ [PRIVATE]</span>
               <span className="font-display" style={{ fontSize: '12px', color: '#A9A9C9' }}>APP</span>
             </div>
 
